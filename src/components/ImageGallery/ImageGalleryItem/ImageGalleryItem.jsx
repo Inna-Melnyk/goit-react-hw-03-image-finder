@@ -20,16 +20,18 @@ export class ImageGalleryItem extends Component {
 
   render() {
     const { image, imageName, largeImage } = this.props;
+    const { isOpen } = this.state;
+
 
     return (
       <Wrap>
         <img src={image} alt={imageName} width="240" onClick={this.openModal} />
 
-        {this.state.isOpen && (
+        {isOpen && (
           <Modal
             imageName={imageName}
             url={largeImage}
-            isOpen={this.state.isOpen}
+            isOpen={isOpen}
             onClose={this.closeModal}
           />
         )}

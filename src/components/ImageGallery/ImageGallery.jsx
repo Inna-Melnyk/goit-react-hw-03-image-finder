@@ -103,21 +103,23 @@ export class ImageGallery extends Component {
     });
   };
 
-  render() {
+    render() {
+        const { images, loadbutton, loading } = this.state;
+        const { searchImage } = this.props;
     return (
       <Container>
-        {!this.state.images && <Text>Enter search name</Text>}
+        {!images && <Text>Enter search name</Text>}
 
-        {this.state.images && (
+        {images && (
           <ImageGalleryList
-            items={this.state.images}
-            name={this.props.searchImage}
+            items={images}
+            name={searchImage}
           />
         )}
-        {this.state.loadbutton && (
+        {loadbutton && (
           <Button onLoadMore={this.handleLoadMoreImages} />
         )}
-        {this.state.loading && <Loader />}
+        {loading && <Loader />}
       </Container>
     );
   }
