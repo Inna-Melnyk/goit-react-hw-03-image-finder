@@ -15,7 +15,7 @@ export class ImageGallery extends Component {
     loadbutton: false,
   };
 
-  componentDidUpdate(prevProps, _) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevProps.searchImage !== this.props.searchImage) {
       this.setState({
         loading: true,
@@ -57,45 +57,51 @@ export class ImageGallery extends Component {
           });
         });
     }
-    }
-    
-    componentWillUnmount
-  handleLoadMoreImages = () => {
-    const nextPage = this.state.page + 1;
 
-    this.setState({
-      loading: true,
-      page: nextPage,
-      loadbutton: false,
-    });
+    if (prevState.page !== this.state.page) {
+      fetchGalleryPictures({
+        query: this.state.searchName,
+        pageNumber: this.state.page,
+      })
+        .then(data => {
+          if (data.hits.length < 12) {
+            toast.warn(`That's the lest batch of pictures`);
+            return this.setState(prevState => {
+              return {
+                images: [...prevState.images, ...data.hits],
+                loading: false,
+                loadbutton: false,
+              };
+            });
+          }
 
-    fetchGalleryPictures({ query: this.state.searchName, pageNumber: nextPage })
-      .then(data => {
-        if (data.hits.length < 12) {
-          toast.warn(`That's the lest batch of pictures`);
-          return this.setState({
+          this.setState(prevState => {
+            return {
+              images: [...prevState?.images, ...data.hits],
+              loading: false,
+              loadbutton: true,
+            };
+          });
+        })
+        .catch(() => {
+          toast.error(`Sorry, there is no more picture`);
+          this.setState({
             loadbutton: false,
             loading: false,
           });
-        }
+        });
+    }
+  }
 
-        this.setState(prevState => {
-          return {
-            images: [...prevState.images, ...data.hits],
-            loading: false,
-            loadbutton: true,
-          };
-        });
-      })
-      .catch(message => {
-        toast.error(`Sorry, there is no more picture`);
-        this.setState({
-          loadbutton: false,
-          loading: false,
-        });
-      });
-    };
-    
+  handleLoadMoreImages = () => {
+    this.setState(prevState => {
+      return {
+        loading: true,
+        page: prevState.page + 1,
+        loadbutton: false,
+      };
+    });
+  };
 
   render() {
     return (
