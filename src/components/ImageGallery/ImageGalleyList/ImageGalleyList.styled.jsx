@@ -1,5 +1,4 @@
-import styled from '@emotion/styled';
-
+import styled from "@emotion/styled";
 
 export const List = styled.ul`
   padding-bottom: 20px;

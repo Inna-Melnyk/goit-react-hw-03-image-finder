@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { Form as FormikForm, Field as FormikField } from 'formik';
+import styled from "@emotion/styled";
+import { Form as FormikForm, Field as FormikField } from "formik";
 
 export const Header = styled.div`
   padding: 25px 20px;

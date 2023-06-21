@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const Container = styled.div`
   object-fit: cover;
@@ -9,7 +9,7 @@ export const Container = styled.div`
     width: 100%;
     height: auto;
     object-fit: cover;
-    cursor:pointer;
+    cursor: pointer;
   }
 `;
 

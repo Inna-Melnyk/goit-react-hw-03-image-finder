@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-export const LoadMoreBtn = styled.button`
+export const ButtonStyled = styled.button`
   display: block;
   margin: 0 auto 20px;
   min-width: 125px;

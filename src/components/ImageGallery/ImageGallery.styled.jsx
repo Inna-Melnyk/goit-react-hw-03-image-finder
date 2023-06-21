@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 95vw;
@@ -13,7 +13,7 @@ export const Text = styled.p`
   text-align: center;
 `;
 export const List = styled.ul`
-padding-bottom: 20px;
+  padding-bottom: 20px;
   list-style: none;
   display: flex;
   flex-wrap: wrap;

@@ -1,27 +1,26 @@
-import { Component } from 'react';
-import { Modal } from 'components/Modal/Modal';
-import { Wrap } from './ImageGalleryItem.styled';
+import { Component } from "react";
+import { Modal } from "../../Modal/Modal";
+import { Wrap } from "./ImageGalleryItem.styled";
 
 export class ImageGalleryItem extends Component {
   state = {
-    isOpen: false,
+    isOpen: false
   };
 
   openModal = () => {
     this.setState({
-      isOpen: true,
+      isOpen: true
     });
   };
   closeModal = () => {
     this.setState({
-      isOpen: false,
+      isOpen: false
     });
   };
 
   render() {
     const { image, imageName, largeImage } = this.props;
     const { isOpen } = this.state;
-
 
     return (
       <Wrap>
