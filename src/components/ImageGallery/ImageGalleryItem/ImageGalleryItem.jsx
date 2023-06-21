@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Modal } from "../../Modal/Modal";
 import { Wrap } from "./ImageGalleryItem.styled";
+import PropTypes from 'prop-types';
 
 export class ImageGalleryItem extends Component {
   state = {
@@ -19,16 +20,16 @@ export class ImageGalleryItem extends Component {
   };
 
   render() {
-    const { image, imageName, largeImage } = this.props;
+    const { image, tags, largeImage } = this.props;
     const { isOpen } = this.state;
 
     return (
       <Wrap>
-        <img src={image} alt={imageName} width="240" onClick={this.openModal} />
+        <img src={image} alt={tags} width="240" onClick={this.openModal} />
 
         {isOpen && (
           <Modal
-            imageName={imageName}
+            imageName={tags}
             url={largeImage}
             isOpen={isOpen}
             onClose={this.closeModal}
@@ -38,3 +39,9 @@ export class ImageGalleryItem extends Component {
     );
   }
 }
+
+ImageGalleryItem.propTypes = {
+  image: PropTypes.string.isRequired,
+  imageName: PropTypes.string,
+  largeImage: PropTypes.string.isRequired,
+};

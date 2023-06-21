@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component } from "react"; 
+import PropTypes from 'prop-types';
 import { Container, Text } from "./ImageGallery.styled";
 import { Button } from "../Button/Button";
 import { Loader } from "components/Loader/Loader";
@@ -17,3 +18,10 @@ export class ImageGallery extends Component {
     );
   }
 }
+
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  hasMoreImages: PropTypes.bool,
+  onClickMoreImages: PropTypes.func.isRequired,
+};

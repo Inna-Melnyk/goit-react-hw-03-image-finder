@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from 'prop-types';
 import { Formik } from "formik";
 import { toast } from "react-toastify";
 import { BsFillSearchHeartFill } from "react-icons/bs";
@@ -37,3 +37,8 @@ export const Searchbar = ({ onSubmit }) => {
     </Header>
   );
 };
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+

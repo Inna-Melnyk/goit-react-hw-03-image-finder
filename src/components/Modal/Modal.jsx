@@ -1,4 +1,5 @@
 import ReactModal from "react-modal";
+import PropTypes from 'prop-types';
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { Image } from "./Modal.styled";
 
@@ -16,8 +17,8 @@ export const Modal = ({ imageName, url, isOpen, onClose }) => {
         overlay: { backgroundColor: "rgba(0, 0, 0, 0.2)" },
         content: {
           padding: "0",
-          width: 1000,
-          height: 600,
+          width: "80%",
+          height: 700,
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
@@ -28,4 +29,11 @@ export const Modal = ({ imageName, url, isOpen, onClose }) => {
       <Image src={url} alt={imageName} onClick={onClose} width="500" />
     </ReactModal>
   );
+};
+
+Modal.propTypes = {
+  imageName: PropTypes.string,
+  url: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
